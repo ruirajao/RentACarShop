@@ -1,18 +1,20 @@
 public abstract class Vehicle {
-    private String brand;
-    private String color;
+    private final String brand;
+    private final String color;
     private int tank;
-    private int tankConsumption; // Km/lt
+    private final int maxTank;
+    private final int tankConsumption; // L/100km
 
-    public Vehicle(String brand, String color, int tankConsumption) {
+    public Vehicle(String brand, String color, int tankConsumption, int maxTank) {
         this.brand = brand;
         this.color = color;
         this.tank = 25;
         this.tankConsumption = tankConsumption;
+        this.maxTank = maxTank;
     }
 
-    public int currentFuel() {
-        return tank;
+    public int getTank() {
+        return this.tank;
     }
 
     public void setTank(int tank) {
@@ -23,8 +25,9 @@ public abstract class Vehicle {
         return tankConsumption;
     }
 
+
     public void refill() {
-        this.tank = 25;
+        this.tank = maxTank;
     }
 
     public abstract void drive(int distance, int time);
