@@ -31,6 +31,14 @@ public class Client {
     }
 
     public void trip(int distance, int time) {
+        if (this.vehicle == null) {
+            System.out.println("You haven't rented a vehicle");
+            return;
+        }
+        if (!hasEnteredShop) {
+            System.out.println("You haven't entered in a shop");
+            return;
+        }
         if (vehicle instanceof Car) {
             ((Car) vehicle).drive(distance, time);
             return;
